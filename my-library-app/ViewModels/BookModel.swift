@@ -9,4 +9,9 @@ import Foundation
 
 class BookModel: ObservableObject {
     
+    @Published var books: [Book]
+    
+    init() {
+        books = DataService.getData()
+    }
 }
