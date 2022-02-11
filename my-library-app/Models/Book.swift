@@ -7,9 +7,7 @@
 
 import Foundation
 
-class Book: Identifiable, Decodable {
-    
-    var uid: UUID?
+struct Book: Identifiable, Decodable {
     var title: String
     var author: String
     var isFavourite: Bool

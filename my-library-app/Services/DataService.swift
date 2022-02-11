@@ -27,9 +27,6 @@ class DataService {
             do {
                 let books = try decoder.decode([Book].self, from: data)
                 
-                for i in books {
-                    i.uid = UUID()
-                }
                 
                 return books
                 
