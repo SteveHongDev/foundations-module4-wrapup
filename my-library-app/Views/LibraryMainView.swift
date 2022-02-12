@@ -72,7 +72,9 @@ struct LibraryMainView: View {
                 }
             }
             .navigationTitle("My Library")
+            
         }
+        .navigationViewStyle(.stack)
     }
 }
 

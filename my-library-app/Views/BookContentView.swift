@@ -10,12 +10,13 @@ import SwiftUI
 struct BookContentView: View {
     
     @EnvironmentObject var model: BookModel
+    @State var page = 0
     
     var book: Book
     
     var body: some View {
         
-        TabView {
+        TabView(selection: $page) {
             
             ForEach (0..<book.content.count) { index in
                 VStack {
@@ -31,6 +32,14 @@ struct BookContentView: View {
         }
         .tabViewStyle(PageTabViewStyle())
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
+        .onChange(of: page) { newValue in
+            model.changePage(bookId: book.id, page: newValue)
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                    page = book.currentPage
+            }
+        }
     }
 }
 
