@@ -26,10 +26,17 @@ struct BookDetailView: View {
             
             Spacer()
             
-            Image("cover\(book.id)")
-                .resizable()
-                .frame(width: 300, height: 450, alignment: .center)
-                .scaledToFill()
+            NavigationLink {
+                BookContentView(book: book)
+            } label: {
+                Image("cover\(book.id)")
+                    .resizable()
+                    .frame(width: 300, height: 450, alignment: .center)
+                    .scaledToFill()
+            }
+
+            
+            
             
             Spacer()
             
@@ -57,7 +64,7 @@ struct BookDetailView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .onChange(of: ratingScore) { newValue in
-                model.changeRating(bookId: book.id, rating: ratingScore)
+                model.changeRating(bookId: book.id, rating: newValue)
             }
             .padding(.horizontal, 30)
             
